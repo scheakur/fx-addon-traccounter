@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Numbers</title>
+    <link rel="stylesheet" href="traccounter.css" charset="utf-8">
+  </head>
+  <body>
+    <div class="traccounter">
+      <div class="trac" v-repeat="numbers">
+        <a class="link" href="{{$key}}" target="_blank" v-on="click: hide">
+          <span class="number">{{$value}}</span>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
