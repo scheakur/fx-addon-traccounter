@@ -1,13 +1,20 @@
 const container = new Vue({
   el: document.querySelector('.traccounter'),
   data: {
-    numbers: {
-      'http://trac.edgewall.org/report/1': '?'
-    },
+    numbers: {},
+    newUrl: '',
+    newTitle: ''
   },
   methods: {
-    hide: hide
+    hide: hide,
+    save: save
   },
+});
+
+
+self.port.on('update', function(url, res) {
+  var num = extractNumber(res);
+  container.$data.numbers[url].num = num;
 });
 
 
@@ -15,10 +22,25 @@ function hide() {
   self.port.emit('hide');
 }
 
-self.port.on('update', function(url, res) {
-  var num = extractNumber(res);
-  container.$data.numbers[url] = num;
-});
+
+function save() {
+  var url = container.$data.newUrl;
+  if (url === '') {
+    return;
+  }
+  var title = container.$data.newTitle;
+  if (title === '') {
+    title = url;
+  }
+  container.$data.numbers.$add(url, {
+    title: title,
+    num: '?'
+  });
+  self.port.emit('save', url, title);
+  container.$data.newUrl = '';
+  container.$data.newTitle = '';
+}
+
 
 function extractNumber(res) {
   var matched = res.match(/<h1>([\n\r]|.)*?<\/h1>/m);
@@ -32,4 +54,3 @@ function extractNumber(res) {
   }
   return '?';
 }
-
