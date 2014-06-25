@@ -7,7 +7,8 @@ const container = new Vue({
   },
   methods: {
     hide: hide,
-    save: save
+    save: save,
+    remove: remove,
   },
 });
 
@@ -20,6 +21,13 @@ self.port.on('update', function(url, res) {
 
 function hide() {
   self.port.emit('hide');
+}
+
+
+function remove(data) {
+  var url = data.$key;
+  container.numbers.$delete(url);
+  self.port.emit('remove', url);
 }
 
 
