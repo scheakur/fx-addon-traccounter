@@ -22,10 +22,9 @@ self.port.on('add', function(id, url, title) {
   });
 });
 
-self.port.on('update', function(url, res) {
+self.port.on('update', function(id, res) {
   var num = extractNumber(res);
-  url = normalizeUrl(url);
-  container.numbers[url].num = num;
+  container.numbers[id].num = num;
 });
 
 
@@ -35,9 +34,9 @@ function hide() {
 
 
 function remove(data) {
-  var url = data.$key;
-  container.numbers.$delete(url);
-  self.port.emit('remove', url);
+  var id = data.$key;
+  container.numbers.$delete(id);
+  self.port.emit('remove', id);
 }
 
 

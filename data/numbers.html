@@ -14,7 +14,7 @@
       </div>
       <div class="trac" v-repeat="numbers">
         <span>{{title}}</span>
-        <a class="link" href="{{$key}}" target="_blank" v-on="click: hide">
+        <a class="link" href="{{url}}" target="_blank" v-on="click: hide">
           <span class="number">{{num}}</span>
         </a>
         <button v-on="click: remove(this)">delete</button>
