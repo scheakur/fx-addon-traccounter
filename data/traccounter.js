@@ -13,9 +13,19 @@ const container = new Vue({
 });
 
 
+self.port.on('add', function(id, url, title) {
+  console.log(id, url, title);
+  container.numbers.$add(id, {
+    url: url,
+    title: title,
+    num: '?',
+  });
+});
+
 self.port.on('update', function(url, res) {
   var num = extractNumber(res);
-  container.$data.numbers[url].num = num;
+  url = normalizeUrl(url);
+  container.numbers[url].num = num;
 });
 
 
@@ -32,21 +42,17 @@ function remove(data) {
 
 
 function save() {
-  var url = container.$data.newUrl;
+  var url = container.newUrl;
   if (url === '') {
     return;
   }
-  var title = container.$data.newTitle;
+  var title = container.newTitle;
   if (title === '') {
     title = url;
   }
-  container.$data.numbers.$add(url, {
-    title: title,
-    num: '?'
-  });
+  container.newUrl = '';
+  container.newTitle = '';
   self.port.emit('save', url, title);
-  container.$data.newUrl = '';
-  container.$data.newTitle = '';
 }
 
 
