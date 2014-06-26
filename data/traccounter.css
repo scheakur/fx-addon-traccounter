@@ -1,3 +1,46 @@
+html {
+	background-color: #fff;
+	font-family: sans-serif;
+	color: #333;
+}
+
+.control {
+	margin-bottom: 10px;
+}
+
+.trac {
+	width: 120px;
+	height: 120px;
+	float: left;
+	margin: 5px;
+	text-align: right;
+	border: 2px solid #888;
+}
+
+.link {
+	display: block;
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+	color: #c20000;
+	text-decoration: none;
+}
+
 .number {
 	font-size: 32px;
+}
+
+.title {
+	display: block;
+	text-align: center;
+}
+
+.del {
+	background-color: transparent;
+	border-style: none;
+	color: #ccc;
+}
+
+.del:hover {
+	color: #333;
 }
