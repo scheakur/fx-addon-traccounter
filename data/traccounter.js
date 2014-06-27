@@ -3,12 +3,14 @@ const container = new Vue({
   data: {
     numbers: {},
     newUrl: '',
-    newTitle: ''
+    newTitle: '',
+    importJson: '',
   },
   methods: {
     hide: hide,
     save: save,
     remove: remove,
+    importData: importData,
   },
 });
 
@@ -66,4 +68,13 @@ function extractNumber(res) {
     }
   }
   return '?';
+}
+
+
+function importData() {
+  var data = JSON.parse(container.importJson);
+  data.forEach(function(d) {
+    self.port.emit('save', d.url, d.title);
+  });
+  container.importJson = '';
 }

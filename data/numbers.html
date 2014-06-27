@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="traccounter">
-      <div class="control">
+      <div class="controller">
         <input type="text" v-model="newUrl">
         <input type="text" v-model="newTitle">
         <button v-on="click: save">save</button>
@@ -20,6 +20,10 @@
           </a>
           <span class="title">{{title}}</span>
         </div>
+      </div>
+      <div class="controller">
+        <textarea v-model="importJson"></textarea>
+        <button v-on="click: importData">import</button>
       </div>
     </div>
   </body>
