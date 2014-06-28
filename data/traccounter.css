@@ -1,26 +1,46 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
 html {
-	background-color: #fff;
 	font-family: sans-serif;
 	color: #333;
+	background: #eceff1;
 }
 
 .controller {
-	margin: 5px;
+	margin: 4px;
+	padding: 4px;
+}
+
+.tracs {
+	width: 580px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .trac {
-	width: 133px;
-	height: 133px;
-	float: left;
+	display: block;
+	box-sizing: border-box;
+	flex: 0 0 136px;
+	width: 136px;
+	height: 136px;
 	margin: 4px;
+	padding: 4px;
+	border-radius: 2px;
+	box-shadow: rgba(0, 0, 0, 0.098) 0px 2px 4px, rgba(0, 0, 0, 0.098) 0px 0px 3px;
+	position: relative;
+	background-color: #FFF;
 	text-align: right;
-	border: 2px solid #888;
 }
 
 .link {
 	display: block;
-	height: 90px;
-	line-height: 80px;
+	height: 110px;
+	line-height: 110px;
 	text-align: center;
 	color: #c20000;
 	text-decoration: none;
@@ -37,6 +57,9 @@ html {
 }
 
 .del {
+	position: absolute;
+	right: 0;
+	top: 0;
 	background-color: transparent;
 	border-style: none;
 	color: #ccc;
