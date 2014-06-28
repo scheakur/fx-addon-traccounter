@@ -25,8 +25,10 @@ self.port.on('add', function(id, url, title) {
 });
 
 self.port.on('update', function(id, res) {
-  var num = extractNumber(res);
-  container.numbers[id].num = num;
+  if (container.numbers[id]) {
+    var num = extractNumber(res);
+    container.numbers[id].num = num;
+  }
 });
 
 
