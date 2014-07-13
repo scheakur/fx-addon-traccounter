@@ -8,9 +8,18 @@
   <body>
     <div class="traccounter">
       <div class="controller">
-        <input type="text" v-model="newUrl">
-        <input type="text" v-model="newTitle">
-        <button v-on="click: save">save</button>
+        <div>
+          <input type="text" v-model="newTitle">
+          <input type="text" v-model="newUrl">
+          <button v-on="click: save">save</button>
+        </div>
+        <div>
+          <textarea v-model="importJson"></textarea>
+          <button v-on="click: importData">import</button>
+        </div>
+        <div>
+          <button class="close-button" v-on="click: hideController">close</button>
+        </div>
       </div>
       <div class="tracs">
         <div class="trac" v-repeat="numbers">
@@ -20,10 +29,12 @@
           </a>
           <span class="title">{{title}}</span>
         </div>
-      </div>
-      <div class="controller">
-        <textarea v-model="importJson"></textarea>
-        <button v-on="click: importData">import</button>
+        <div class="trac adder">
+          <a class="link" href="javascript:void(0);" v-on="click: showController">
+            <span class="number">+</span>
+          </a>
+          <span class="title">Add</span>
+        </div>
       </div>
     </div>
   </body>

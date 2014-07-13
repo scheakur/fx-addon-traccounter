@@ -11,6 +11,8 @@ const container = new Vue({
     save: save,
     remove: remove,
     importData: importData,
+    showController: showController,
+    hideController: hideController,
   },
 });
 
@@ -79,4 +81,13 @@ function importData() {
     self.port.emit('save', d.url, d.title);
   });
   container.importJson = '';
+}
+
+
+function showController() {
+  container.$el.querySelector('.controller').style.display = 'block';
+}
+
+function hideController() {
+  container.$el.querySelector('.controller').style.display = 'none';
 }
