@@ -8,15 +8,28 @@
   <body>
     <div class="traccounter">
       <div class="controller">
-        <div>
-          <input type="text" v-model="newTitle">
-          <input type="text" v-model="newUrl">
-          <button v-on="click: save">save</button>
-        </div>
-        <div>
-          <textarea v-model="importJson"></textarea>
-          <button v-on="click: importData">import</button>
-        </div>
+        <table class="function">
+          <tr>
+            <td><label class="label">Title</label></td>
+            <td><input class="field" type="text" v-model="newTitle"></td>
+          </tr>
+          <tr>
+            <td><label class="label">URL</label></td>
+            <td><input class="field" type="text" v-model="newUrl"></td>
+          </tr>
+          <tr>
+            <td align="center" colspan="2"><button class="button" v-on="click: save">save</button></td>
+          </tr>
+        </table>
+        <table class="function">
+          <tr>
+            <td><label class="label">Data</label></td>
+            <td><textarea rows="5" class="field" v-model="importJson"></textarea></td>
+          </tr>
+          <tr>
+            <td align="center" colspan="2"><button class="button" v-on="click: importData">import</button></td>
+          </tr>
+        </table>
         <div>
           <button class="close-button" v-on="click: hideController">close</button>
         </div>

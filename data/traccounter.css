@@ -28,6 +28,25 @@ html {
 	right: 10px;
 }
 
+.function {
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+.label {
+	display: block;
+	width: 50px;
+}
+
+.field {
+	width: 300px;
+	padding: 3px;
+}
+
+.button {
+	width: 100px;
+}
+
 .tracs {
 	width: 580px;
 	margin-left: auto;
