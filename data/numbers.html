@@ -7,31 +7,33 @@
   </head>
   <body>
     <div class="traccounter">
-      <div class="controller">
-        <table class="function">
-          <tr>
-            <td><label class="label">Title</label></td>
-            <td><input class="field" type="text" v-model="newTitle"></td>
-          </tr>
-          <tr>
-            <td><label class="label">URL</label></td>
-            <td><input class="field" type="text" v-model="newUrl"></td>
-          </tr>
-          <tr>
-            <td align="center" colspan="2"><button class="button" v-on="click: save">save</button></td>
-          </tr>
-        </table>
-        <table class="function">
-          <tr>
-            <td><label class="label">Data</label></td>
-            <td><textarea rows="5" class="field" v-model="importJson"></textarea></td>
-          </tr>
-          <tr>
-            <td align="center" colspan="2"><button class="button" v-on="click: importData">import</button></td>
-          </tr>
-        </table>
-        <div>
-          <button class="close-button" v-on="click: hideController">close</button>
+      <div class="screen">
+        <div class="controller">
+          <table class="function">
+            <tr>
+              <td><label class="label">Title</label></td>
+              <td><input class="field" type="text" v-model="newTitle"></td>
+            </tr>
+            <tr>
+              <td><label class="label">URL</label></td>
+              <td><input class="field" type="text" v-model="newUrl"></td>
+            </tr>
+            <tr>
+              <td align="center" colspan="2"><button class="button" v-on="click: save">save</button></td>
+            </tr>
+          </table>
+          <table class="function">
+            <tr>
+              <td><label class="label">Data</label></td>
+              <td><textarea rows="5" class="field" v-model="importJson"></textarea></td>
+            </tr>
+            <tr>
+              <td align="center" colspan="2"><button class="button" v-on="click: importData">import</button></td>
+            </tr>
+          </table>
+          <div>
+            <button class="close-button" v-on="click: hideController">close</button>
+          </div>
         </div>
       </div>
       <div class="tracs">

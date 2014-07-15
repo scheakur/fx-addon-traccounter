@@ -85,9 +85,11 @@ function importData() {
 
 
 function showController() {
-  container.$el.querySelector('.controller').style.display = 'block';
+  container.$el.querySelector('.tracs').classList.add('blur');
+  container.$el.querySelector('.screen').style.display = 'block';
 }
 
 function hideController() {
-  container.$el.querySelector('.controller').style.display = 'none';
+  container.$el.querySelector('.screen').style.display = 'none';
+  container.$el.querySelector('.tracs').classList.remove('blur');
 }

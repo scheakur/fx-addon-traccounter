@@ -9,14 +9,24 @@ html {
 	background: #eceff1;
 }
 
+.screen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 600px;
+	height: 600px;
+	display: none;
+	z-index: 1;
+	background: transparent;
+}
+
 .controller {
 	position: fixed;
 	top: 100px;
 	left: 100px;
 	width: 380px;
 	height: 300px;
-	display: none;
-	z-index: 1;
+	z-index: 2;
 	background: #fff;
 	box-shadow: rgba(0, 0, 0, 0.098) 0px 2px 4px, rgba(0, 0, 0, 0.098) 0px 0px 3px;
 	padding: 10px;
@@ -54,6 +64,10 @@ html {
 	margin-right: auto;
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.blur {
+	filter: url(filter.svg#blur);
 }
 
 .trac {
