@@ -94,6 +94,10 @@ html {
 	text-decoration: none;
 }
 
+.link:active, .link:focus {
+	outline: none;
+}
+
 .number {
 	font-size: 32px;
 }

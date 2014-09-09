@@ -37,15 +37,15 @@
         </div>
       </div>
       <div class="tracs">
-        <div class="trac" v-repeat="numbers">
+        <div class="trac" draggable="true" v-repeat="numbers">
           <button class="del" v-on="click: remove(this)">x</button>
-          <a class="link" href="{{url}}" target="_blank" v-on="click: hide">
+          <a class="link" href="{{url}}" target="_blank" draggable="false" v-on="click: hide">
             <span class="number">{{num}}</span>
           </a>
           <span class="title">{{title}}</span>
         </div>
         <div class="trac adder">
-          <a class="link" href="javascript:void(0);" v-on="click: showController">
+          <a class="link" href="javascript:void(0);" draggable="false" v-on="click: showController">
             <span class="number">+</span>
           </a>
           <span class="title">Add</span>
