@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="tracs">
-        <div class="trac" draggable="true" v-repeat="numbers">
+        <div class="trac draggable" draggable="true" v-repeat="numbers" data-url="{{url}}">
           <button class="del" v-on="click: remove(this)">x</button>
           <a class="link" href="{{url}}" target="_blank" draggable="false" v-on="click: hide">
             <span class="number">{{num}}</span>

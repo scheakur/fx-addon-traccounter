@@ -93,3 +93,92 @@ function hideController() {
   container.$el.querySelector('.screen').style.display = 'none';
   container.$el.querySelector('.tracs').classList.remove('blur');
 }
+
+
+function makeDraggable() {
+  var dragging;
+
+  document.addEventListener('dragstart', function(event) {
+    var draggable = getDraggable(event.target);
+    if (draggable) {
+      dragging = draggable;
+      event.dataTransfer.setData('text/plain', draggable.getAttribute('data-url'));
+      draggable.classList.add('dragging');
+    }
+  }, false);
+
+  document.addEventListener('dragend', function(event) {
+    var draggable = getDraggable(event.target);
+    if (draggable) {
+      draggable.classList.remove('dragging');
+    }
+  }, false);
+
+  document.addEventListener('dragover', function(event) {
+    event.preventDefault();
+  }, false);
+
+  document.addEventListener('dragenter', function(event) {
+    var draggable = getDraggable(event.target);
+    var from = getDraggable(event.relatedTarget);
+    if (draggable && !from && draggable !== dragging) {
+      draggable.classList.add('shadow');
+    }
+  }, false);
+
+  document.addEventListener('dragleave', function(event) {
+    var draggable = getDraggable(event.target);
+    var to = getDraggable(event.relatedTarget);
+    if (draggable && !to) {
+      draggable.classList.remove('shadow');
+    }
+  }, false);
+
+  document.addEventListener('drop', function(event) {
+    event.preventDefault();
+    var draggable = getDraggable(event.target);
+    if (draggable && draggable !== dragging) {
+      var container = dragging.parentNode;
+      var fromUpper = dragging.offsetTop - draggable.offsetTop < 0;
+      var fromLeft = dragging.offsetLeft - draggable.offsetLeft < 0;
+      draggable.classList.remove('shadow');
+      container.removeChild(dragging);
+      if (fromUpper || fromLeft) {
+        container.insertBefore(dragging, draggable.nextElementSibling);
+      } else {
+        container.insertBefore(dragging, draggable);
+      }
+    }
+  }, false);
+
+  function getDraggable(el) {
+    return getParent(el, 'draggable', 'tracs');
+  }
+
+  function isDraggable(el) {
+    return el.classList && el.classList.contains('draggable');
+  }
+
+  function hasParent(el, clazz, stopper) {
+    if (getParent(el, clazz, stopper)) {
+      return true;
+    }
+    return false;
+  }
+
+  function getParent(el, clazz, stopper) {
+    while (el) {
+      if (el.classList && el.classList.contains(stopper)) {
+        return null;
+      }
+      if (el.classList && el.classList.contains(clazz)) {
+        return el;
+      }
+      el = el.parentNode;
+    }
+    return null;
+  }
+
+}
+
+makeDraggable();
