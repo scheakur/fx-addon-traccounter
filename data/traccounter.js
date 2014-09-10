@@ -159,13 +159,6 @@ function makeDraggable() {
     return el.classList && el.classList.contains('draggable');
   }
 
-  function hasParent(el, clazz, stopper) {
-    if (getParent(el, clazz, stopper)) {
-      return true;
-    }
-    return false;
-  }
-
   function getParent(el, clazz, stopper) {
     while (el) {
       if (el.classList && el.classList.contains(stopper)) {
