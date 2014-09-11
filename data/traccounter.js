@@ -117,6 +117,10 @@ function makeDraggable() {
 
   document.addEventListener('dragover', function(event) {
     event.preventDefault();
+    var draggable = getDraggable(event.target);
+    if (draggable && draggable !== dragging && !draggable.classList.contains('shadow')) {
+      draggable.classList.add('shadow');
+    }
   }, false);
 
   document.addEventListener('dragenter', function(event) {
@@ -130,7 +134,7 @@ function makeDraggable() {
   document.addEventListener('dragleave', function(event) {
     var draggable = getDraggable(event.target);
     var to = getDraggable(event.relatedTarget);
-    if (draggable && !to) {
+    if (draggable && draggable !== to) {
       draggable.classList.remove('shadow');
     }
   }, false);
