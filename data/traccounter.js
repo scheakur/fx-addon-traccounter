@@ -4,13 +4,14 @@ const container = new Vue({
     numbers: {},
     newUrl: '',
     newTitle: '',
-    importJson: '',
+    jsonData: '',
   },
   methods: {
     hide: hide,
     save: save,
     remove: remove,
     importData: importData,
+    exportData: exportData,
     showController: showController,
     hideController: hideController,
   },
@@ -76,11 +77,19 @@ function extractNumber(res) {
 
 
 function importData() {
-  var data = JSON.parse(container.importJson);
+  var data = JSON.parse(container.jsonData);
   data.forEach(function(d) {
     self.port.emit('save', d.url, d.title);
   });
-  container.importJson = '';
+  container.jsonData = '';
+}
+
+
+function exportData() {
+  var data = Object.keys(container.numbers).map(function(id) {
+    return container.numbers[id];
+  });
+  container.jsonData = JSON.stringify(data, null, '  ');
 }
 
 

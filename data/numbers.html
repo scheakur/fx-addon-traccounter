@@ -24,8 +24,11 @@
           </table>
           <table class="function">
             <tr>
+              <td align="center" colspan="2"><button class="button" v-on="click: exportData">export</button></td>
+            </tr>
+            <tr>
               <td><label class="label">Data</label></td>
-              <td><textarea rows="5" class="field" v-model="importJson"></textarea></td>
+              <td><textarea rows="3" class="field" v-model="jsonData"></textarea></td>
             </tr>
             <tr>
               <td align="center" colspan="2"><button class="button" v-on="click: importData">import</button></td>
