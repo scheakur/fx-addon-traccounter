@@ -1,0 +1,10 @@
+language: python
+python:
+- '2.7'
+script:
+- ./tool/build.sh
+after_success:
+- ./tool/push-to-gh-pages.sh
+env:
+  global:
+    secure: "L4jcOh1ltK57453KwdoDwfk6wO9iQZ2H8qIObEzZKmkl3ifXyV/M4XG3trNL3YBpdFEw3XpQbOBw5zvw3WOyHp3MxOQxHxkEL6f/9HQuYDM2Karw55QnN99GkzrrUbJf1IYSoQtUtIWbaSLQrdVjD9KUSQBRuYHLGIm5InWKqog="
