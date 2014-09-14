@@ -5,7 +5,7 @@ git config --global user.name "travis-ci"
 
 cd build
 git clone --quiet https://github.com/scheakur/fx-addon-traccounter.git
-cd fx-addon-htb
+cd fx-addon-traccounter
 git checkout -b gh-pages origin/gh-pages
 cp ../../*.xpi ./
 git add -A
