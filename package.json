@@ -1,8 +1,8 @@
 {
-  "name": "fx-addon-traccounter",
-  "title": "fx-addon-traccounter",
+  "name": "traccounter",
+  "title": "traccounter",
   "id": "jid1-fVJmg7wQ2NCv0g",
-  "description": "a basic add-on",
+  "description": "Count Tickets in Trac",
   "author": "scheakur <scheakur@gmail.com>",
   "license": "MIT",
   "version": "0.1"
