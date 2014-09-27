@@ -1,7 +1,7 @@
 const container = new Vue({
   el: document.querySelector('.traccounter'),
   data: {
-    numbers: {},
+    urls: [],
     newUrl: '',
     newTitle: '',
     jsonData: '',
@@ -20,7 +20,8 @@ const container = new Vue({
 
 self.port.on('add', function(id, url, title) {
   console.log(id, url, title);
-  container.numbers.$add(id, {
+  container.urls.push({
+    id: id,
     url: url,
     title: title,
     num: '?',
@@ -28,9 +29,13 @@ self.port.on('add', function(id, url, title) {
 });
 
 self.port.on('update', function(id, res) {
-  if (container.numbers[id]) {
+  var index = container.urls.map(function(info) {
+    return info.id;
+  }).indexOf(id);
+
+  if (index > -1) {
     var num = extractNumber(res);
-    container.numbers[id].num = num;
+    container.urls[index].num = num;
   }
 });
 
@@ -41,9 +46,15 @@ function hide() {
 
 
 function remove(data) {
-  var id = data.$key;
-  container.numbers.$delete(id);
-  self.port.emit('remove', id);
+  var id = data.id;
+  var index = container.urls.map(function(info) {
+    return info.id;
+  }).indexOf(id);
+
+  if (index > -1) {
+    container.urls.splice(index, 1);
+    self.port.emit('remove', id);
+  }
 }
 
 
@@ -86,10 +97,7 @@ function importData() {
 
 
 function exportData() {
-  var data = Object.keys(container.numbers).map(function(id) {
-    return container.numbers[id];
-  });
-  container.jsonData = JSON.stringify(data, null, '  ');
+  container.jsonData = JSON.stringify(container.urls, null, '  ');
 }
 
 
@@ -152,16 +160,14 @@ function makeDraggable() {
     event.preventDefault();
     var draggable = getDraggable(event.target);
     if (draggable && draggable !== dragging) {
-      var container = dragging.parentNode;
-      var fromUpper = dragging.offsetTop - draggable.offsetTop < 0;
-      var fromLeft = dragging.offsetLeft - draggable.offsetLeft < 0;
       draggable.classList.remove('shadow');
-      container.removeChild(dragging);
-      if (fromUpper || fromLeft) {
-        container.insertBefore(dragging, draggable.nextElementSibling);
-      } else {
-        container.insertBefore(dragging, draggable);
-      }
+      var ids = container.urls.map(function(info) {
+        return info.id;
+      });
+      var a = ids.indexOf(dragging.getAttribute('data-id'));
+      var b = ids.indexOf(draggable.getAttribute('data-id'));
+      var x = container.urls.splice(a, 1)[0];
+      container.urls.splice(b, 0, x);
     }
   }, false);
 
