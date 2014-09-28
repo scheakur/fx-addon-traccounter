@@ -164,10 +164,10 @@ function makeDraggable() {
       var ids = container.urls.map(function(info) {
         return info.id;
       });
-      var a = ids.indexOf(dragging.getAttribute('data-id'));
-      var b = ids.indexOf(draggable.getAttribute('data-id'));
-      var x = container.urls.splice(a, 1)[0];
-      container.urls.splice(b, 0, x);
+      var from = ids.indexOf(dragging.getAttribute('data-id'));
+      var to = ids.indexOf(draggable.getAttribute('data-id'));
+      var target = container.urls.splice(from, 1)[0];
+      container.urls.splice(to, 0, target);
     }
   }, false);
 
