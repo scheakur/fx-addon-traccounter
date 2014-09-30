@@ -113,6 +113,13 @@ function hideController() {
 }
 
 
+function move(from, to) {
+  var target = container.urls.splice(from, 1)[0];
+  container.urls.splice(to, 0, target);
+  self.port.emit('move', from, to);
+}
+
+
 function makeDraggable() {
   var dragging;
 
@@ -166,9 +173,7 @@ function makeDraggable() {
       });
       var from = ids.indexOf(dragging.getAttribute('data-id'));
       var to = ids.indexOf(draggable.getAttribute('data-id'));
-      var target = container.urls.splice(from, 1)[0];
-      container.urls.splice(to, 0, target);
-      self.port.emit('move', from, to);
+      move(from, to);
     }
   }, false);
 
