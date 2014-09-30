@@ -168,6 +168,7 @@ function makeDraggable() {
       var to = ids.indexOf(draggable.getAttribute('data-id'));
       var target = container.urls.splice(from, 1)[0];
       container.urls.splice(to, 0, target);
+      self.port.emit('move', from, to);
     }
   }, false);
 
